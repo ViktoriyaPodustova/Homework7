@@ -23,7 +23,6 @@ public class Main {
         }
     }
 
-
     public static String jsStringOrNull() {
         try{
             URL weatherURL = new URL("http://dataservice.accuweather.com/forecasts/v1/daily/5day/295212?apikey=lMmY2qLZX7Nl8xuPDSvbssFf0qWwPfUY&metric=true");

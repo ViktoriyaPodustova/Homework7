@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,11 +19,22 @@ public class Main {
             JsonObject weatherResponseJson = jsonReader.readObject();
             WeatherResponse weatherResponse = new WeatherResponse(weatherResponseJson);
             System.out.println(weatherResponse);
+
+            System.out.println("________________________");
+
+            Repository.createTable();
+            System.out.println("________________________");
+
+        for (DailyForecast dailyForecast: weatherResponse.getDailyForecasts()){
+                Repository.putDataInDB(dailyForecast);
+            }
+
+            List<DailyForecast> dailyForecasts = Repository.unloadingDataFromDB();
+            System.out.println(dailyForecasts);
         } else {
             System.out.println("Не удалось прочитать данные с сервера.");
         }
     }
-
 
     public static String jsStringOrNull() {
         try{

@@ -14,6 +14,10 @@ public class WeatherResponse {
         }
     }
 
+    public DailyForecast[] getDailyForecasts() {
+        return dailyForecasts;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
